@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Login</title>
+        <style>
+            *{
+                font-family: "Tahoma";
+            }
+            #login-panel{
+                width: 400px;
+                margin: 50px auto;
+            }
+            #login-panel table{
+                border: 1px solid #DDD;
+                padding: 50px;
+                border-radius: 3px;
+            }
+            :focus{
+                outline: none;
+            }
+            #login-panel input[type='text'],#login-panel input[type='password']{
+                border: 1px solid #DDD;
+                padding: 3px;
+                border-radius: 5px;
+            }
+            #login-panel input[type='submit']{
+                border: 1px solid #DDD;
+                width: 100%;
+                padding: 5px;
+                border-radius: 3px;
+                font-size: 15px;
+                color: white;
+                background-color: grey;
+                cursor: pointer;
+                margin-top: 5px;
+            }
+            #login-panel input[type='submit']:active{
+                background-color: #ececec;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        #{artisteBean.inf()}
+       <div id="login-panel">
+            <h:form>
+                <table>
+                    <tr>
+                        <td>Username :</td>
+                        <td>
+                            <h:inputText value="#{artisteBean.a.login}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Password :</td>
+                        <td>
+                            <h:inputSecret value="#{artisteBean.a.pass}"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <h:commandButton value="Log in" action="#{artisteBean.searchbyRecordno()}"/>
+                        </td>
+                    </tr>
+                </table>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+

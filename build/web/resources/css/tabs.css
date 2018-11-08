@@ -1,0 +1,19 @@
+#tabs {
+	margin: 0 auto;
+	width: 400px;
+	padding-top: 15px;
+	text-transform: uppercase;
+	text-align: center;
+}
+#tabs a, #tabs a.inactive:hover {
+	border-bottom:1px solid #171717;
+	font-size: 15px;
+	font-weight: 400;
+	color:#171717; 
+	padding: 5px 0;
+	margin: 0 15px;
+	display: inline-block; 
+}
+#tabs a.inactive{
+	border-bottom: 0;
+}

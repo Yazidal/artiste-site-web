@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Oeuvres CRUD</title>  
+</h:head>  
+<h:body>  
+    #{artisteBean.inf()}
+    <h:form>
+        <p:growl id="messages"/>
+        <p:menubar>
+           <p:menuitem id="o" value="Oeuvres" url="oeuvreCrud.xhtml" />
+           <p:menuitem id="e" value="Expositions" url="expoCrud.xhtml" />
+           <p:menuitem id="a" value="Ateliers" url="atelierCrud.xhtml" />
+           <p:menuitem id="m" value="Mes infos" url="infoCrud.xhtml" />
+           <p:menuitem id="s" value="Statistiques" url="statistiques.xhtml" />
+        </p:menubar>
+    </h:form>
+        <br/><br/>
+    
+    <p:dialog id="userDetail1" widgetVar="$userDetail1" header="Add Oeuvre" hideEffect="explode" appendTo="@(body)" resizable="true" draggable="true" closeOnEscape="true">  
+        <h:form  enctype="multipart/form-data">  
+  
+            <p:panelGrid columns="2">  
+
+                <h:outputLabel for="Oeuvre" value="Oeuvre: *" />    
+                <p:fileUpload mode="simple" value="#{oeuvreBean.uf}" />
+        
+                <h:outputLabel for="des" value="Description" />  
+                <p:inputTextarea id="des" label="Oeuvre Description" value="#{oeuvreBean.o.description}" placeholder="Description" />  
+  
+                <p:outputLabel for="t" value="Taille" />  
+                <p:inputText id="t" label="taille" value="#{oeuvreBean.o.taille}" placeholder="Taille" />  
+                
+                <h:outputLabel for="et" value="Choix Etat" />  
+                <p:selectOneMenu id="et" label="Choix Etat" value="#{oeuvreBean.o.etat}" effect="fold">  
+                    <f:selectItem itemLabel="En vente" itemValue="En vente" /> 
+                </p:selectOneMenu>  
+                
+                <p:outputLabel for="dob" value="Date" />  
+                <p:calendar id="dob" value="#{oeuvreBean.o.date}" label="Date" required="true" pattern="yyyy-MM-dd" effect="slideDown" requiredMessage="Veuillez entrer la date" navigator="true" showButtonPanel="true" yearRange="c-60:c+60" placeholder="Date" />  
+  
+                <p:outputLabel for="p" value="Prix" />  
+                <p:inputText id="p" label="prix" value="#{oeuvreBean.o.prix}" placeholder="Prix" />  
+  
+                <p:commandButton value="add" process="@form" id="AddButtonId" ajax="false" icon="ui-icon-plus" update=":form1:userTable" action="#{oeuvreBean.addUser()}" oncomplete="PF('$userDetail1').hide()" />  
+  
+                <p:commandButton id="cancelAddButtonId" value="Cancel" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>  
+  
+    </p:dialog>  
+    <h:outputScript>  
+        /* 
+        <![CDATA[ */  
+function handleComplete(xhr, status, args) {  
+if(args && args.validName) {  
+$userDetail1.hide();  
+}  
+}  
+/* ]]>*/  
+  
+    </h:outputScript>  
+    <p:dialog id="userDetail2" widgetVar="$userDetail2" header="Update Oeuvre" hideEffect="explode" appendTo="@(body)" resizable="true" draggable="true" closeOnEscape="true">  
+        <h:form enctype="multipart/form-data">  
+            <h:inputHidden value="#{oeuvreBean.o.id}" />  
+            <p:panelGrid columns="2">  
+                <h:outputLabel for="Oeuvre" value="Oeuvre: *" />    
+                <p:fileUpload mode="simple" value="#{oeuvreBean.uf}" />
+  
+                <h:outputLabel for="d" value="Description" />  
+                <p:inputTextarea id="d" label="escription" value="#{oeuvreBean.o.description}" placeholder="Description" />  
+  
+                 <p:outputLabel for="t" value="Taille" />  
+                 <p:inputText id="t" label="taille" value="#{oeuvreBean.o.taille}" placeholder="Taille" /> 
+                
+                <h:outputLabel for="etat" value="Choix etat" />  
+                <p:selectOneMenu id="etat" label="Choix etat" value="#{oeuvreBean.o.etat}" effect="fold">  
+                    <f:selectItem itemLabel="Choisissez" itemValue="" />  
+                    <f:selectItem itemLabel="Vendue" itemValue="Vendue" />  
+                    <f:selectItem itemLabel="En vente" itemValue="En vente" />  
+                </p:selectOneMenu>  
+                
+                <p:outputLabel for="dob" value="Date" />  
+                <p:calendar id="dob" value="#{oeuvreBean.o.date}" label="DatePosted:" required="true" pattern="dd/MM/yyyy" effect="slideDown" requiredMessage="Veuillez entrer la date!" navigator="true" showButtonPanel="true" yearRange="c-60:c+60" placeholder="Date" />  
+  
+                <p:outputLabel for="c" value="Code" />  
+                <p:inputText id="c" label="code" value="#{oeuvreBean.o.code}" placeholder="Code" /> 
+                
+                <p:outputLabel for="p" value="Prix" />  
+                <p:inputText id="p" label="prix" value="#{oeuvreBean.o.prix}" placeholder="Prix" /> 
+  
+                <p:commandButton value="Update" ajax="false" icon="ui-icon-disk" update=":form1:userTable" action="#{oeuvreBean.updateOeuvre()}" oncomplete="handleComplete(xhr, status, args)" />  
+                <p:commandButton value="Cancel" id="cancelButtonId" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>  
+  
+    </p:dialog>  
+    <h:outputScript id="handleCompleteScript" target="body">  
+        /* 
+        <![CDATA[ */  
+function handleComplete(xhr, status, args) {  
+if(args && args.validName) {  
+$userDetail2.hide();  
+}  
+}  
+/* ]]>*/  
+    </h:outputScript>  
+  
+    <h:form id="form1">  
+        <p:commandButton icon="ui-icon-plusthick" id="addUserBtn" value="Add Oeuvre"  update=":userDetail1" ajax="true" oncomplete="PF('$userDetail1').show()" />  
+  
+        <p:dataTable value="#{oeuvreBean.olist}" var="user" paginator="true" rows="5" id="userTable">  
+            
+            <p:column headerText="Id" style="text-align: left;">  
+                <h:outputText value="#{user.id}" />  
+            </p:column>  
+            
+            <p:column headerText="Oeuvre">  
+                <h:outputText value="#{user.toile}" />  
+            </p:column>  
+            
+            <p:column  headerText="Description">  
+                <h:outputText value="#{user.description}" />  
+  
+            </p:column>  
+            
+            <p:column headerText="Taille">  
+                <h:outputText value="#{user.taille}" />  
+            </p:column>  
+            
+            <p:column sortBy="#{user.etat}" headerText="Etat">  
+                <h:outputText value="#{user.etat}" />  
+            </p:column>  
+  
+            <p:column headerText="Date">  
+                <h:outputText value="#{user.date}">  
+                    <f:convertDateTime type="date" pattern="dd-MMM-yyyy" />  
+                </h:outputText>  
+            </p:column>  
+            <p:column headerText="Code">  
+                <h:outputText value="#{user.code}" />  
+            </p:column> 
+            
+            <p:column headerText="Prix">  
+                <h:outputText value="#{user.prix}" />  
+            </p:column> 
+            <p:column headerText="Edit" style="text-align: center">  
+                <p:commandButton icon="ui-icon-pencil" id="editUserBtn" value="Edit" ajax="true" action="#{oeuvreBean.changeOeuvre(user)}" update=":userDetail2" oncomplete="PF('$userDetail2').show()" />  
+  
+            </p:column>  
+  
+            <p:column headerText="Delete" style="text-align: center">  
+  
+                <p:commandButton value="Delete" icon="ui-icon-trash" type="button" onclick="PF('confirmDialog').show()" />  
+                <p:confirmDialog message="Are you sure you want to delete this record?Record once deleted can not be retrieved." header="Deleting" severity="alert" widgetVar="confirmDialog">  
+                    <p:commandButton value="Yes Sure" update=":form1:userTable" action="#{oeuvreBean.deleteOeuvre(user)}" oncomplete="PF('confirmDialog').hide()" />  
+  
+                    <p:commandButton value="Not Yet" onclick="PF('confirmDialog').hide();" type="button" />  
+                </p:confirmDialog>  
+  
+            </p:column>  
+            <p:rowExpansion>  
+                <h:outputText value="#{user.id}" styleClass="rowExpansion" />  
+            </p:rowExpansion>  
+        </p:dataTable>  
+    </h:form>  
+  
+</h:body>  
+  
+</html>  

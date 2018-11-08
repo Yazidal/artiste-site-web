@@ -1,0 +1,33 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 20, 2018, 10:14:29 PM
+    Author     : yazid
+*/
+
+.groupMenuOeuvre{
+	padding-top: 16px;
+	position: relative;
+	z-index: 1;
+	text-align: center;
+}
+.groupMenuOeuvre a{
+	font-weight: 300;
+	font-size: 13px;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 0 8px;
+}
+.groupMenuOeuvre span{
+	font-weight: 300;
+	font-size: 10px;
+	color: #fff;
+	padding: 0 11px;
+	background: url(resources/images/spar.gif) 50% 2px no-repeat;
+}
+.groupMenuOeuvre a:hover, .groupMenuOeuvre a.current{
+	font-weight: 600;
+}

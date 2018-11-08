@@ -1,0 +1,224 @@
+@charset "utf-8";
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+}
+body {
+	font: 15px "Open Sans", Tahoma, Arial, Helvetica, sans-serif;
+	font-weight: 400;
+	color: #171717;
+	background: #242424;
+}
+img {
+	border: 0;
+}
+a{
+	color: #e7e7e7;
+	text-decoration: none;
+}
+#corps {
+	width: 940px;
+	margin: 0 0 50px 25px;
+}
+h1{
+	font-size: 14px;
+}
+#header {
+	width: 940px;
+	height: 96px;
+	overflow: hidden;
+	position: relative;
+	border-bottom: 1px dashed #363636;
+}
+#logo {
+	position: relative;
+	z-index: 1002;
+	padding-top: 18px;
+	padding-left: 23px;
+	font-size: 16px;
+	color: #fff;
+	height: 80px;
+}
+#logo a{
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: 400;
+	color: #fff;
+}
+#logo p{
+	text-indent: 1px;
+}
+
+#menuTop{
+	/*width: 409px;*/
+	width: 390px;
+	height: 56px;
+	overflow: hidden;
+	float: left;
+}
+#menuTop li{
+	float: left;
+}
+#menuTop li a{
+	display: block;
+	text-transform: uppercase;
+	line-height: 56px;
+	margin-right: 20px;
+}
+#menuTop li a:hover, #menuTop li a.current{
+	color: #4a4a4a;
+}
+#lng{
+	padding-top: 15px;
+	font-size: 10px;
+	font-weight: 600;
+}
+#descImg{
+	position: absolute;
+	z-index: 1;
+	bottom: 0;
+	max-width: 804px;
+	width: 100%;
+	opacity: 0;
+}
+.flex-active-slide #descImg{
+	opacity: 1;
+	-webkit-transition: -webkit-opacity 0s ease 0.5s;
+	transition: opacity 0s ease 0.5s;
+}
+.lblTitre{
+	font-weight: 600;
+}
+.lblDesc{
+	padding-left: 20px;
+	font-weight: 300;
+}
+.lblTitre, .lblDesc, .lblDispo{
+	display: inline-block;
+	padding-top: 20px;	
+}
+.lblDispo{
+	float: right;
+	font-weight: 300;
+}
+#biographie{
+	max-width: 860px;
+	padding: 15px 30px 25px;
+	background: #fff;
+	margin: 25px auto 100px;
+	position: relative;
+	top: 30px;
+	z-index: 9999;
+	font-weight: 300;
+}
+#biographie h1{
+	text-align: center;
+	font-weight: 600;
+	font-size: 20px;
+	text-transform: uppercase;
+	padding: 5px 0;
+}
+#biographie h2{
+	font-size: 15px;
+}
+#biographie p{
+	font-weight: 400;
+	font-size: 13px;
+	text-align: justify;
+	padding-top: 14px;
+}
+#biographie .cv{
+	background-color: #171717;
+	color:#fff;
+	text-align: center;
+	display: block;
+	width: 115px;
+	height: 25px;
+	line-height: 25px;
+	margin-top: 30px;
+	font-size: 11px;
+}
+#biographie .cv:hover{
+	background-color: #313131;
+	color:#ececec;	
+}
+#photos{
+	padding: 20px 0 0;
+}
+#texte{
+	padding: 10px 0 0;	
+}
+#expositions{
+	padding-bottom: 95px;
+}
+.bientot{
+	color: #454545;
+	font-size: 26px;
+	font-family: "Lucida Sans", Arial, Helvetica, sans-serif;
+	font-weight: normal;
+}
+.actualite{
+	padding: 25px 0 10px;
+}
+.actualite img{
+	width: 180px;
+	float: left;
+}
+.actualite div{
+	width: 738px;
+	float: right;
+}
+.actualite h2{
+	font-size: 26px;
+	/*line-height: 20px;*/
+	font-weight: normal;
+}
+.actualite p{
+	text-align: justify;
+	padding-top: 20px;
+}
+.clear{
+	clear: both;
+}
+#resaux{
+	text-align: center;
+	padding-top: 25px;
+}
+#resaux a{
+	width: 12px;
+	height: 12px;
+	display: inline-block;
+	text-indent: -999px;
+	font-size: 10px;
+	padding: 6px;
+}
+#resaux #FaceBook{
+	background: url(../images/resaux-sociaux.gif) no-repeat 9px 50%;
+}
+#resaux #Pinterest{
+	background: url(../images/resaux-sociaux.gif) no-repeat -23px 50%;
+}
+#resaux #Twitter{
+	background: url(../images/resaux-sociaux.gif) no-repeat -56px 50%;
+}
+#resaux #GooglePlus{
+	background: url(../images/resaux-sociaux.gif) no-repeat -87px 50%;
+}
+#resaux #Instagram{
+	background: url(../images/resaux-sociaux.gif) no-repeat -121px 50%;
+}
+#footer{
+	text-align: right;
+	color: #4a4a4a;
+	font-size: 11px;
+	padding-top: 11px;
+}
+#footer a{
+	color: #4a4a4a;
+}
+
+.clear{
+	clear: both;
+}

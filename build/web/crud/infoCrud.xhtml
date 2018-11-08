@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"  xmlns:p="http://primefaces.org/ui">  
+<h:head>  
+    <title>Expos CRUD</title>  
+</h:head>  
+<h:body>  
+    #{artisteBean.inf()}
+     <h:form>
+        <p:growl id="messages"/>
+        <p:menubar>
+           <p:menuitem id="o" value="Oeuvres" url="oeuvreCrud.xhtml" />
+           <p:menuitem id="e" value="Expositions" url="expoCrud.xhtml" />
+           <p:menuitem id="a" value="Ateliers" url="atelierCrud.xhtml" />
+           <p:menuitem id="m" value="Mes infos" url="infoCrud.xhtml" />
+           <p:menuitem id="s" value="Statistiques" url="statistiques.xhtml" />
+        </p:menubar>
+    </h:form>
+        <br/><br/>
+        
+    <p:dialog id="userDetail1" widgetVar="$userDetail1" header="Add Exposition" hideEffect="explode" appendTo="@(body)" resizable="true" draggable="true" closeOnEscape="true">  
+        <h:form>  
+  
+            <p:panelGrid columns="2">  
+                <h:outputLabel for="t" value="Titre:" />  
+                <p:inputText id="t" value="#{expoBean.e.titre}" label="expo titre" placeholder="Expo Titre" />  
+  
+                <h:outputLabel for="st" value="SousTitre" />  
+                <p:inputText id="st" label="soustitre" value="#{expoBean.e.sousTitre}" placeholder="Sous-titre" />  
+                
+                <p:outputLabel for="des" value="Description" />  
+                <p:inputTextarea id="des" label="description" value="#{expoBean.e.description}" placeholder="Description" />  
+  
+                <h:outputLabel for="l" value="Lieu" />  
+                <p:inputText id="l" label="lieu" value="#{expoBean.e.lieu}" placeholder="Lieu" />  
+                
+                <p:outputLabel for="dob" value="Date" />  
+                <p:calendar id="dob" value="#{expoBean.e.date}" label="DatePosted:" required="true" pattern="dd/MM/yyyy" effect="slideDown" requiredMessage="Please Enter The Date" navigator="true" showButtonPanel="true" yearRange="c-60:c+60" placeholder="Date" />  
+  
+
+                <p:commandButton value="add" process="@form" id="AddButtonId" ajax="false" icon="ui-icon-plus" update=":form1:userTable" actionListener="#{expoBean.addExpos()}" oncomplete="PF('$userDetail1').hide()" />  
+  
+                <p:commandButton id="cancelAddButtonId" value="Cancel" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>  
+  
+    </p:dialog>  
+    <h:outputScript>  
+        /* 
+        <![CDATA[ */  
+function handleComplete(xhr, status, args) {  
+if(args && args.validName) {  
+$userDetail1.hide();  
+}  
+}  
+/* ]]>*/  
+  
+    </h:outputScript>  
+    <p:dialog id="userDetail2" widgetVar="$userDetail2" header="Update Exposition" hideEffect="explode" appendTo="@(body)" resizable="true" draggable="true" closeOnEscape="true">  
+        <h:form>  
+            <h:inputHidden value="#{artisteBean.a.id}" />  
+            <p:panelGrid columns="2">  
+                
+                <h:outputLabel for="t" value="Login:" />  
+                <p:inputText id="t" value="#{artisteBean.a.login}" label="titre" placeholder="Login" />  
+  
+                <h:outputLabel for="st" value="Mot de passe:" />  
+                <p:inputText id="st" label="soustitre" value="#{artisteBean.a.pass}" placeholder="Mot de passe" />  
+
+                <p:outputLabel for="dob" value="Prénom: " />   
+                <p:inputText id="dob" value="#{artisteBean.a.prenom}" label="titre" placeholder="Prénom" />  
+
+                <h:outputLabel for="l" value="Nom: " />  
+                <p:inputText id="l" value="#{artisteBean.a.nom}" label="lieu" placeholder="nom" /> 
+                
+                <h:outputLabel for="z" value="Adresse " />  
+                <p:inputText id="z" value="#{artisteBean.a.adresse}" label="adresse" placeholder="nom" />  
+                
+                <h:outputLabel for="hn" value="Téléphone: " />  
+                <p:inputText id="hn" value="#{artisteBean.a.tel}" label="tel" placeholder="téléphone" />  
+                
+                <p:outputLabel for="bio" value="Biographie " />  
+                <p:inputTextarea id="bio" label="bio" value="#{artisteBean.a.bio}" placeholder="Biographie" />  
+  
+                <p:commandButton value="Update" ajax="false" icon="ui-icon-disk" update=":form1:userTable" action="#{artisteBean.updateArtiste()}" oncomplete="handleComplete(xhr, status, args)" />  
+                <p:commandButton value="Cancel" id="cancelButtonId" onclick="handleComplete(xhr, status, args)" />  
+            </p:panelGrid>  
+        </h:form>  
+  
+    </p:dialog>  
+    <h:outputScript id="handleCompleteScript" target="body">  
+        /* 
+        <![CDATA[ */  
+function handleComplete(xhr, status, args) {  
+if(args && args.validName) {  
+$userDetail2.hide();  
+}  
+}  
+/* ]]>*/  
+    </h:outputScript>  
+  
+    <h:form id="form1">  
+<!--        <p:commandButton icon="ui-icon-plusthick" id="addUserBtn" value="Add Exposition"  update=":userDetail1" ajax="true" oncomplete="PF('$userDetail1').show()" />  -->
+  
+        <p:dataTable value="#{artisteBean.alist}" var="user" paginator="true" resizableColumns="true" rows="5" id="userTable">  
+            <p:column headerText="Id No" style="text-align: left;">  
+                <h:outputText value="#{user.id}" />  
+            </p:column>  
+            <p:column headerText="Login">  
+                #{user.login}  
+            </p:column>  
+            <p:column headerText="Mot de passe">  
+                <h:outputText value="#{user.pass}" />  
+  
+            </p:column>  
+            <p:column headerText="Prénom">  
+                <h:outputText value="#{user.prenom}" />  
+            </p:column>  
+  
+            <p:column headerText="Nom">  
+                <h:outputText value="#{user.nom}">  
+                </h:outputText>  
+            </p:column>  
+            <p:column headerText="Adresse">  
+                <h:outputText value="#{user.adresse}" />  
+            </p:column>  
+            
+            <p:column headerText="Téléphone">  
+                <h:outputText value="#{user.tel}" />  
+            </p:column>
+            
+             <p:column headerText="E-mail">  
+                 <h:outputText value="#{user.email}" />  
+            </p:column>
+            
+            <p:column headerText="Biographie">  
+                <h:outputText value="#{user.bio}" />  
+            </p:column> 
+            <p:column headerText="Edit" style="text-align: center">  
+                <p:commandButton icon="ui-icon-pencil" id="editUserBtn" value="Edit" ajax="true" actionListener="#{artisteBean.changeArtiste(user)}" update=":userDetail2" oncomplete="PF('$userDetail2').show()" />  
+  
+            </p:column>  
+  
+       
+            <p:rowExpansion>  
+                <h:outputText value="#{artisteBean.a.id}" styleClass="rowExpansion" />  
+            </p:rowExpansion>  
+        </p:dataTable>  
+    </h:form>  
+  
+</h:body>  
+  
+</html>  
