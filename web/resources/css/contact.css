@@ -1,0 +1,53 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : May 21, 2018, 2:50:51 AM
+    Author     : yazid
+*/
+
+#contact{
+	padding: 12px 40px 30px;
+	max-width: 352px;
+	background: #fff;
+	margin: 0 auto 100px;
+	position: relative;
+	z-index: 10;
+}
+#contact label{
+	display: block;
+	padding-top: 18px;
+	padding-bottom: 6px;
+}
+#contact input, #contact textarea{
+	padding: 0 10px 0 15px;
+	width: 92%;
+	height: 36px;
+	border: 1px solid #171717;
+	color: #171717;
+	font-size: 13px;
+	font-family: "Open sans", Arial, Helvetica, sans-serif;
+}
+#contact textarea{
+	padding-top: 10px;
+	padding-bottom: 10px;
+	height: 140px;
+	margin-bottom: 25px;
+}
+#contact .submit{
+	font-weight: 300;
+	width: 120px;
+	height: 35px;
+	padding-top: 0;
+	padding-left: 0;
+	cursor: pointer;
+	text-align: center;
+	background: #212121;
+	color: #fff;
+	float: right;
+}
+#contact .submit:hover{
+	color: #ececec;
+}

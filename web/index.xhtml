@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+        <meta name="description" content="Mohamed Abaoubida est un artiste calligraphe marocain, Né en 1974, vit et travaille à Marrakech. Conseiller en design et métiers d'artisanat. Son talent se manifeste par un geste et des œuvres à caractère contemporain."/>
+        <title>Mohamed Abaoubida artiste Marocain, peintre et calligraphe à Marrakech</title>
+        <meta name="keywords" content="Mohamed Abaoubida, peintre marocain, artiste peintre marocain, calligraphe marocain, calligraphie, artiste peintre Maroc, peintre marocain contemporain, artiste contemporain, peinture Maroc, biographie Mohamed Abaoubida"/>
+        <!-- Style -->
+        <link href="resources/css/style.css" rel="stylesheet" type="text/css"/>
+        <link href="resources/css/menu_sideslide.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/jquery.tosrus.all.css"/>
+        <link href="resources/css/backshow.css" rel="stylesheet" type="text/css"/>
+        <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,400italic" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" media="screen and (max-width: 768px)" href="resources/css/mobile.css?1449727480" type="text/css"/>
+        <!-- Modernizr -->
+        <script type="text/javascript" src="resources/js/modernizr.js"></script>
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="resources/js/jquery-1.7.mini.js"></script>
+        <script type="text/javascript" src="resources/js/jquery.tosrus.min.js"></script>
+        <script type="text/javascript" src="resources/js/hammer.min.js"></script>
+        <!-- Open sans google font -->
+
+        <script>
+            $(document).ready(function () {
+                var mobile_menu = $('.menu-wrap .menu .list').clone();
+                $('<div id="menu-wrap" style="display:none" />').wrapInner(mobile_menu).appendTo('body');
+                var nav = $('<span id="menu-ico" />');
+                mobile_menu.parent().prepend(nav);
+
+                nav.click(function () {
+                    var ref = $(this), off = 0;
+                    ref.toggleClass('open');
+
+                    if (ref.hasClass('open')) {
+                        mobile_menu.show(100);
+                        off = ref.offset().top - 10;
+                    } else {
+                        mobile_menu.hide(100);
+                    }
+                    $('html, body').animate({scrollTop: off}, 'slow');
+                });
+            });
+        </script>
+    </h:head>
+    <h:body>
+       #{visitesBean.visites_jour(request)}
+        #{artisteBean.inf()}
+				<div id="logo">
+			<a href="/" title="MOHAMED ABAOUBIDA Artiste peintre">MOHAMED ABAOUBIDA</a>
+			<p>Artiste peintre</p>
+		</div>
+		<div class="menu-wrap">
+			<div class="menu">
+				<div class="list">
+					<a href="faces/biographie.xhtml" title="Biographie">Biographie</a>
+					<a href="faces/oeuvres.xhtml" title="&OElig;uvres">&OElig;uvres</a>
+					<a href="faces/expositions.xhtml" title="Expositions">Expositions</a>
+                                        <a href="ateliers.xhtml" title="Ateliers">Ateliers</a>
+					<a href="faces/contact.xhtml" title="Contact">Contact</a>
+					
+					<ul id="resaux">
+						<a href="#" id="FaceBook" alt="FaceBook">FaceBook</a>
+						<a href="#" id="Pinterest" alt="Pinterest">Pinterest</a>
+						<a href="#" id="Twitter" alt="Twitter">Twitter</a>
+						<a href="#" id="GooglePlus" alt="Google +">Google +</a>
+						<a href="#" id="Instagram" alt="Instagram">Instagram</a>
+					</ul>
+					
+									</div>
+			</div>
+			<span class="close-button" id="close-button">&nbsp;</span>
+		</div>
+		<span class="menu-button" id="open-button">&nbsp;</span>
+			
+	<div class="content-wrap">
+		<div class="content">
+			<ul class="cb-slideshow">
+				<li><span>Image 01</span></li>
+				<li><span>Image 02</span></li>
+				<li><span>Image 01</span></li>
+				<li><span>Image 02</span></li>
+				<li><span>Image 01</span></li>
+				<li><span>Image 02</span></li>
+			</ul>
+		</div>
+	</div>
+	<script src="resources/js/classie.js" type="text/javascript"></script>
+	<script src="resources/js/menu.js" type="text/javascript"></script>
+    </h:body>
+</html>
+
